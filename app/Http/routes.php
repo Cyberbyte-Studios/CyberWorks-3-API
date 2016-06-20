@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix' => 'api/v1/core'], function () {
+    Route::post('login', 'Auth\LoginController@login');
+    Route::resource('user', Auth\UserController::class);
 });
