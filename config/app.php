@@ -162,6 +162,7 @@ return [
          */
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
+        Caffeinated\Modules\ModulesServiceProvider::class
 
     ],
 
@@ -210,7 +211,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         
         'JWTAuth'   => Tymon\JWTAuth\Facades\JWTAuth::class,
-        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+        'Module' => Caffeinated\Modules\Facades\Module::class
 
     ],
 

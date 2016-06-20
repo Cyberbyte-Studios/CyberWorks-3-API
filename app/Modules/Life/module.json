@@ -1,0 +1,9 @@
+{
+	"name": "Arma Life",
+	"slug": "life",
+	"namespace": "Life",
+	"version": "1.0",
+	"author": "cammyagmes, scollins",
+	"license": "MIT",
+	"description": "Provides support for the arma life framework"
+}
