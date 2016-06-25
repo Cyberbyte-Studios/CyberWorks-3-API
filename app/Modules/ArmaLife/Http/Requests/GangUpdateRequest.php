@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Modules\ArmaLife\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class UserUpdateRequest extends Request
+class GangUpdateRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class UserUpdateRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required'
+            'id' => 'required'
         ];
     }
 }

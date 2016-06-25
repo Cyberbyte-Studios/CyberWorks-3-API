@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Life\Models;
+namespace App\Modules\ArmaLife\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +10,6 @@ class Gang extends Model
     public $timestamps = false;
     
     public function player() {
-        return $this->belongsTo('App\Modules\Life\Models\Player', 'owner', 'playerid');
+        return $this->belongsTo('App\Modules\ArmaLife\Models\Player', 'owner', 'playerid');
     }
 }

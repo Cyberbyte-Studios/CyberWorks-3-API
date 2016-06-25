@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Life\Providers;
+namespace App\Modules\ArmaLife\Providers;
 
 use App;
 use Config;
@@ -8,7 +8,7 @@ use Lang;
 use View;
 use Illuminate\Support\ServiceProvider;
 
-class LifeServiceProvider extends ServiceProvider
+class ArmaLifeServiceProvider extends ServiceProvider
 {
 	/**
      * Bootstrap the application events.
@@ -33,7 +33,14 @@ class LifeServiceProvider extends ServiceProvider
 		// This service provider is a convenient place to register your modules
 		// services in the IoC container. If you wish, you may make additional
 		// methods or service providers to keep the code more focused and granular.
-		App::register('App\Modules\Life\Providers\RouteServiceProvider');
+		App::register('App\Modules\ArmaLife\Providers\RouteServiceProvider');
+		
+		$this->app->bind(\App\Modules\ArmaLife\Repositories\PlayerRepository::class, \App\Modules\ArmaLife\Repositories\Eloquent\PlayerRepository::class);
+		$this->app->bind(\App\Modules\ArmaLife\Repositories\VehicleRepository::class, \App\Modules\ArmaLife\Repositories\Eloquent\VehicleRepository::class);
+		$this->app->bind(\App\Modules\ArmaLife\Repositories\HouseRepository::class, \App\Modules\ArmaLife\Repositories\Eloquent\HouseRepository::class);
+		$this->app->bind(\App\Modules\ArmaLife\Repositories\ContainerRepository::class, \App\Modules\ArmaLife\Repositories\Eloquent\ContainerRepository::class);
+		$this->app->bind(\App\Modules\ArmaLife\Repositories\GangRepository::class, \App\Modules\ArmaLife\Repositories\Eloquent\GangRepository::class);
+		$this->app->bind(\App\Modules\ArmaLife\Repositories\WantedRepository::class, \App\Modules\ArmaLife\Repositories\Eloquent\WantedRepository::class);
 
 		$this->registerNamespaces();
 	}
@@ -47,7 +54,7 @@ class LifeServiceProvider extends ServiceProvider
 	{
 		Lang::addNamespace('life', realpath(__DIR__.'/../Resources/Lang'));
 
-		View::addNamespace('life', base_path('resources/views/vendor/life'));
+		View::addNamespace('life', base_path('resources/views/vendor/armalife'));
 		View::addNamespace('life', realpath(__DIR__.'/../Resources/Views'));
 	}
 

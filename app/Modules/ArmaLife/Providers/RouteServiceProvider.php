@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Life\Providers;
+namespace App\Modules\ArmaLife\Providers;
 
 use Caffeinated\Modules\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;
@@ -12,7 +12,7 @@ class RouteServiceProvider extends ServiceProvider
 	 *
 	 * @var string|null
 	 */
-	protected $namespace = 'App\Modules\Life\Http\Controllers';
+	protected $namespace = 'App\Modules\ArmaLife\Http\Controllers';
 
 	/**
 	 * Define your module's route model bindings, pattern filters, etc.
@@ -39,7 +39,7 @@ class RouteServiceProvider extends ServiceProvider
 			'namespace'  => $this->namespace,
 			'middleware' => ['api']
 		], function($router) {
-			require (config('modules.path').'/Life/Http/routes.php');
+			require (config('modules.path').'/ArmaLife/Http/routes.php');
 		});
 	}
 }

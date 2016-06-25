@@ -1,0 +1,9 @@
+{
+	"name": "Arma Life",
+	"slug": "armalife",
+	"namespace": "ArmaLife",
+	"version": "1.0",
+	"author": "Cyberbyte Studios",
+	"license": "GNU GPLv3",
+	"description": "Provides support for the arma life framework V4.4r3+"
+}

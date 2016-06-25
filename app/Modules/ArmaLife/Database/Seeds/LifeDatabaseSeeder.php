@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Life\Database\Seeds;
+namespace App\Modules\ArmaLife\Database\Seeds;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
@@ -16,6 +16,6 @@ class LifeDatabaseSeeder extends Seeder
 	{
 		Model::unguard();
 
-		// $this->call('App\Modules\Life\Database\Seeds\FoobarTableSeeder');
+		// $this->call('App\Modules\ArmaLife\Database\Seeds\FoobarTableSeeder');
 	}
 }

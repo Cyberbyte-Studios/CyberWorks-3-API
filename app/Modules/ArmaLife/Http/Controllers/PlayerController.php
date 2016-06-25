@@ -1,37 +1,29 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Modules\ArmaLife\Http\Controllers;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
-use App\Http\Requests\UserCreateRequest;
-use App\Http\Requests\UserUpdateRequest;
-use App\Repositories\UserRepository;
-use App\Validators\UserValidator;
 use App\Http\Controllers\Controller;
 
+use App\Modules\ArmaLife\Http\Requests\PlayerUpdateRequest;
+use App\Modules\ArmaLife\Repositories\PlayerRepository;
 
-class UserController extends Controller
+class PlayerController extends Controller
 {
 
     /**
-     * @var UserRepository
+     * @var PlayerRepository
      */
     protected $repository;
 
-    /**
-     * @var UserValidator
-     */
-    protected $validator;
 
-
-    public function __construct(UserRepository $repository, UserValidator $validator)
+    public function __construct(PlayerRepository $repository)
     {
         $this->repository = $repository;
-        $this->validator  = $validator;
     }
 
 
@@ -47,26 +39,13 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  UserCreateRequest $request
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function store(UserCreateRequest $request)
-    {
-        return $this->repository->create($request->all());
-    }
-
-
-    /**
      * Display the specified resource.
      *
      * @param  int $id
      *
      * @return \Illuminate\Http\Response
      */
-    public function show(int $id)
+    public function show($id)
     {
         return $this->repository->find($id);
     }
@@ -75,11 +54,11 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  UserUpdateRequest $request
-     * @param  string            $id
+     * @param  int            $id
      *
      * @return Response
      */
-    public function update(UserUpdateRequest $request, int $id)
+    public function update(PlayerUpdateRequest $request, $id)
     {
         return $this->repository->update($request->all(), $id);
     }
@@ -92,7 +71,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(int $id)
+    public function destroy($id)
     {
         return $this->repository->delete($id);
     }
