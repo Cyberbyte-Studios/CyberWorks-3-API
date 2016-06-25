@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Presenters;
+namespace App\Modules\ArmaLife\Presenters;
 
-use App\Transformers\UserTransformer;
+use App\Modules\ArmaLife\Transformers\PlayerTransformer;
 use Prettus\Repository\Presenter\FractalPresenter;
 
 /**
- * Class UserPresenter
+ * Class PlayerPresenter
  *
  * @package namespace App\Presenters;
  */
-class UserPresenter extends FractalPresenter
+class PlayerPresenter extends FractalPresenter
 {
     /**
      * Transformer
@@ -19,6 +19,6 @@ class UserPresenter extends FractalPresenter
      */
     public function getTransformer()
     {
-        return new UserTransformer();
+        return new PlayerTransformer();
     }
 }

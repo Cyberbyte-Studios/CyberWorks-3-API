@@ -2,10 +2,11 @@
 
 namespace App\Modules\ArmaLife\Repositories\Eloquent;
 
+use App\Modules\ArmaLife\Models\Player;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
+use App\Modules\ArmaLife\Presenters\PlayerPresenter;
 use App\Modules\ArmaLife\Repositories\PlayerRepository as PlayerInterface;
-use App\Modules\ArmaLife\Models\Player;
 
 /**
  * Class PlayerRepository
@@ -22,8 +23,11 @@ class PlayerRepository extends BaseRepository implements PlayerInterface
     {
         return Player::class; 
     }
-
     
+    public function presenter()
+    {
+        return PlayerPresenter::class;
+    }
 
     /**
      * Boot up the repository, pushing criteria
