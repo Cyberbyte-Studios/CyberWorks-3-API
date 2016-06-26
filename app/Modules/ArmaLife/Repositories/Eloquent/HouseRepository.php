@@ -2,10 +2,11 @@
 
 namespace App\Modules\ArmaLife\Repositories\Eloquent;
 
+use App\Modules\ArmaLife\Models\House;
+use App\Modules\ArmaLife\Presenters\HousePresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Modules\ArmaLife\Repositories\HouseRepository as HouseInterface;
-use App\Modules\ArmaLife\Models\House;
 
 /**
  * Class HouseRepository
@@ -23,7 +24,10 @@ class HouseRepository extends BaseRepository implements HouseInterface
         return House::class; 
     }
 
-    
+    public function presenter()
+    {
+        return HousePresenter::class;
+    }
 
     /**
      * Boot up the repository, pushing criteria

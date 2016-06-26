@@ -48,14 +48,15 @@ class ArrayParser
         
         return [
             'cop' => $matches[1][0],
-            'civ' => $matches[2][0],
-            'med' => $matches[3][0]
+            'med' => $matches[2][0],
+            'civ' => $matches[3][0]
         ];
     }
     
     public static function position($position)
     {
-        preg_match_all('/"\[([^,]*),([^,]*),([^,\]]*)]"/', $position, $matches);
+        preg_match_all('/\[([^,]*),([^,]*),([^,\]]*)]/', $position, $matches);
+        
         if (count($matches, COUNT_RECURSIVE) !== 8) { // If match has 3 results it will be 8
             return false;
         }
@@ -85,7 +86,7 @@ class ArrayParser
         foreach ($matches[1] as $key => $name) {
             $parsedLicences[$key] = [
                 'id' => $name,
-                'name' => trans('licence.'.$name),
+                'name' => trans('license.'.$name),
                 'status' => (int) $matches[2][$key]
             ];
         }

@@ -162,8 +162,8 @@ return [
          */
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
-        Caffeinated\Modules\ModulesServiceProvider::class
-
+        Caffeinated\Modules\ModulesServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class
     ],
 
     /*

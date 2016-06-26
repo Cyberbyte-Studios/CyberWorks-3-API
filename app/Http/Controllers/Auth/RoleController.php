@@ -7,28 +7,27 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
-use App\Http\Requests\UserCreateRequest;
-use App\Http\Requests\UserUpdateRequest;
-use App\Repositories\UserRepository;
-use App\Validators\UserValidator;
+use App\Http\Requests\RoleCreateRequest;
+use App\Repositories\RoleRepository;
+use App\Validators\RoleValidator;
 use App\Http\Controllers\Controller;
 
 
-class UserController extends Controller
+class RoleController extends Controller
 {
 
     /**
-     * @var UserRepository
+     * @var RoleRepository
      */
     protected $repository;
 
     /**
-     * @var UserValidator
+     * @var RoleValidator
      */
     protected $validator;
 
 
-    public function __construct(UserRepository $repository, UserValidator $validator)
+    public function __construct(RoleRepository $repository, RoleValidator $validator)
     {
         $this->repository = $repository;
         $this->validator  = $validator;
@@ -49,11 +48,11 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  UserCreateRequest $request
+     * @param  RoleCreateRequest $request
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(UserCreateRequest $request)
+    public function store(RoleCreateRequest $request)
     {
         return $this->repository->create($request->all());
     }
@@ -66,24 +65,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         return $this->repository->find($id);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  UserUpdateRequest $request
-     * @param  string            $id
-     *
-     * @return Response
-     */
-    public function update(UserUpdateRequest $request, int $id)
-    {
-        return $this->repository->update($request->all(), $id);
-    }
-
 
     /**
      * Remove the specified resource from storage.
@@ -92,7 +77,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         return $this->repository->delete($id);
     }

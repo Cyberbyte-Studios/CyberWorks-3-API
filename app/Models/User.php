@@ -5,10 +5,12 @@ namespace App\Models;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements Transformable
 {
     use TransformableTrait;
+    use HasRoles;
     
     /**
      * The attributes that are mass assignable.

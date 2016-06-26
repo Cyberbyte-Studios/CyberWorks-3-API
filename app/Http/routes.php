@@ -14,6 +14,9 @@
 Route::group(['prefix' => 'api/v1/core'], function () {
     Route::post('login', 'Auth\LoginController@login');
     Route::resource('user', Auth\UserController::class);
+    Route::resource('permission', Auth\PermissionController::class);
+    Route::resource('role', Auth\RoleController::class);
+
     
     Route::group(['prefix' => 'module'], function () {
         Route::get('all', 'Module\ModuleController@all');

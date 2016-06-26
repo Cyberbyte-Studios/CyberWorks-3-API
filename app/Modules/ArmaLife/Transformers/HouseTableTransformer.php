@@ -7,7 +7,7 @@ use App\Modules\ArmaLife\Models\House;
 use App\Modules\ArmaLife\Services\ArrayParser;
 
 /**
- * Class PlayerTableTransformer
+ * Class HouseTableTransformer
  * @package namespace App\Transformers;
  */
 class HouseTableTransformer extends TransformerAbstract
