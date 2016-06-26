@@ -12,6 +12,7 @@
 */
 
 Route::group(['prefix' => 'api/v1/armalife'], function() {
+    Route::get('player/table/{limit?}', 'PlayerController@table');
     Route::resource('player', PlayerController::class);
     Route::resource('vehicle', VehicleController::class);
     Route::resource('house', HouseController::class);

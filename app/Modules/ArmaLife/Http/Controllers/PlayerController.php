@@ -5,12 +5,14 @@ namespace App\Modules\ArmaLife\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use App\Modules\ArmaLife\Criteria\PlayerTable;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
-use App\Http\Controllers\Controller;
-
-use App\Modules\ArmaLife\Http\Requests\PlayerUpdateRequest;
+use App\Modules\ArmaLife\Criteria\PlayerTableCriteria;
 use App\Modules\ArmaLife\Repositories\PlayerRepository;
+use App\Modules\ArmaLife\Presenters\PlayerTablePresenter;
+use App\Modules\ArmaLife\Http\Requests\PlayerUpdateRequest;
 
 class PlayerController extends Controller
 {
@@ -35,7 +37,20 @@ class PlayerController extends Controller
     public function index()
     {
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        return $this->repository->all();
+        return $this->repository->paginate();
+    }
+    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function table($limit = null)
+    {
+        $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
+        $this->repository->setPresenter(PlayerTablePresenter::class);
+        $this->repository->pushCriteria(new PlayerTableCriteria());
+        return $this->repository->paginate($limit);
     }
 
     /**
