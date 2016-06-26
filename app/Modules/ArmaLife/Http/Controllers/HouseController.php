@@ -11,6 +11,8 @@ use App\Http\Controllers\Controller;
 
 use App\Modules\ArmaLife\Http\Requests\HouseUpdateRequest;
 use App\Modules\ArmaLife\Repositories\HouseRepository;
+use App\Modules\ArmaLife\Presenters\HouseTablePresenter;
+use App\Modules\ArmaLife\Criteria\HouseTableCriteria;
 
 class HouseController extends Controller
 {
@@ -36,7 +38,20 @@ class HouseController extends Controller
     {
 
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        return $this->repository->all();
+        return $this->repository->paginate();
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function table($limit = null)
+    {
+        $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
+        $this->repository->setPresenter(HouseTablePresenter::class);
+        $this->repository->pushCriteria(new HouseTableCriteria());
+        return $this->repository->paginate($limit);
     }
 
     /**
