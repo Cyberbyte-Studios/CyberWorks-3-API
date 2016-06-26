@@ -18,8 +18,8 @@ test:
         path: "app"
         allow_failures: true
         
-    php_docblock_checker:
-        path: "app"
+    # php_docblock_checker:
+    #     path: "app"
         
     php_loc:
         directory: "app"
