@@ -36,4 +36,9 @@ class HouseRepository extends BaseRepository implements HouseInterface
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
+    
+    public function count()
+    {
+        return $this->model->count();
+    }    
 }

@@ -10,5 +10,5 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface VehicleRepository extends RepositoryInterface
 {
-
+    public function count();
 }

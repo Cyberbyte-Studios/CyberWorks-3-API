@@ -32,4 +32,9 @@ class VehicleRepository extends BaseRepository implements VehicleInterface
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
+    
+    public function count()
+    {
+        return $this->model->count();
+    }
 }

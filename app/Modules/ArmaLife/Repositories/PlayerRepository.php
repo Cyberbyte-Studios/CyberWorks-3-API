@@ -10,5 +10,17 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface PlayerRepository extends RepositoryInterface
 {
-
+    public function cash();
+    
+    public function bank();
+    
+    public function newest();
+    
+    public function cops();
+    
+    public function medics();
+    
+    public function admins();
+    
+    public function donators();
 }

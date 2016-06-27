@@ -13,16 +13,35 @@ class ArrayParser
     // todo: cleanup legacy code
     public static function inventory($items)
     {
-        if ($items != '"[]"' && $items != '' && $items != null) {
-            preg_match_all("/`([^`]*)`/", $items, $matches);
-            $allItems = array_count_values($matches[1]);
-            unset($allItems['']);
-            foreach ($allItems as $item => $count) {
-                $inventory[trans('item.'.$item)] = $count;
-            }
-            return $inventory;
+        // if ($items != '"[]"' && $items != '' && $items != null) {
+        //     preg_match_all("/`([^`]*)`/", $items, $matches);
+        //     $allItems = array_count_values($matches[1]);
+        //     unset($allItems['']);
+        //     foreach ($allItems as $item => $count) {
+        //         $inventory[trans('item.'.$item)] = $count;
+        //     }
+        //     return $inventory;
+        // }
+        // return false;
+        
+        if ($items == '"[]"' && $items == '' && $items == null) {
+            return false;
         }
-        return false;
+        
+        preg_match_all("/`([^`]*)`/", $items, $matches);
+        $allItems = array_count_values($matches[1]);
+        
+        $parsedInventory = [];
+        unset($allItems['']);
+        foreach ($allItems as $key => $count) {
+            array_push($parsedInventory, [
+                'id' => $key,
+                'name' => trans('item.'.$key),
+                'count' => $count
+            ]);
+        }
+
+        return $parsedInventory;
     }
     
     public static function stats($stats)
